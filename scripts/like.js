@@ -8,34 +8,41 @@
 Если эти классы поменять в HTML, скрипт перестанет работать. Будьте аккуратны.
 */
 
-const likeHeartArray = document.querySelectorAll('.like-icon');
-const likeButtonArray = document.querySelectorAll('.card__like-button');
-const iconButtonArray = document.querySelectorAll('.card__icon-button');
+document.addEventListener('DOMContentLoaded', function() {
+  const likeHeartArray = document.querySelectorAll('.like-icon');
+  const likeButtonArray = document.querySelectorAll('.card__like-button');
+  const iconButtonArray = document.querySelectorAll('.card__icon-button');
 
-iconButtonArray.forEach((iconButton, index) => {
-  iconButton.onclick = () =>
-    toggleIsLiked(likeHeartArray[index], likeButtonArray[index]);
-});
+  iconButtonArray.forEach((iconButton, index) => {
+    iconButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      toggleIsLiked(likeHeartArray[index], likeButtonArray[index]);
+    });
+  });
 
-likeButtonArray.forEach((button, index) => {
-  button.onclick = () => toggleIsLiked(likeHeartArray[index], button);
-});
+  likeButtonArray.forEach((button, index) => {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      toggleIsLiked(likeHeartArray[index], button);
+    });
+  });
 
-function toggleIsLiked(heart, button) {
-  heart.classList.toggle('is-liked');
-  setButtonText(heart, button);
-}
-
-function setButtonText(heart, button) {
-  if ([...heart.classList].includes('is-liked')) {
-    setTimeout(
-      () => (button.querySelector('.button__text').textContent = 'Unlike'),
-      500
-    );
-  } else {
-    setTimeout(
-      () => (button.querySelector('.button__text').textContent = 'Like'),
-      500
-    );
+  function toggleIsLiked(heart, button) {
+    heart.classList.toggle('is-liked');
+    setButtonText(heart, button);
   }
-}
+
+  function setButtonText(heart, button) {
+    if ([...heart.classList].includes('is-liked')) {
+      setTimeout(
+        () => (button.querySelector('.button__text').textContent = 'Unlike'),
+        500
+      );
+    } else {
+      setTimeout(
+        () => (button.querySelector('.button__text').textContent = 'Like'),
+        500
+      );
+    }
+  }
+});

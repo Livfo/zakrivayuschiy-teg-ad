@@ -5,7 +5,7 @@
   font-family: "Inter-Variable";
   src: url("../fonts/Inter-Variable.woff2") format("woff2 supports variations"),
     url("../fonts/Inter-Variable.woff2") format("woff2-variations");
-  font-weight: 400 800;
+  font-weight: 400 785; /* Исправлено: добавлено начертание 785 */
 }
 
 @font-face {

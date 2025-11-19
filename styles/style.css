@@ -124,6 +124,7 @@
   padding: 4px 10px 6px 10px;
   font-weight: var(--font-weight-title);
   font-size: 18px;
+  font-variation-settings: "wght" var(--font-weight-title); /* Добавлено */
 }
 
 .image__block {
@@ -229,6 +230,7 @@
   font-weight: var(--font-weight-text);
   font-size: 18px;
   line-height: 115%;
+  font-variation-settings: "wght" var(--font-weight-text); /* Добавлено */
 }
 
 .buttons {
