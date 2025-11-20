@@ -1,20 +1,6 @@
-/* Здесь вы напишете основную часть стилей страницы.
+/* Здесь вы напишете основную часть стилей страницы. */
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
-*/
-
-.page {
+.site-page {
   margin: 0 auto;
   font-family: var(--global-font), sans-serif;
   background: var(--bg-gradient);
@@ -26,7 +12,7 @@
 
 /* Начало header */
 
-.header {
+.site-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,18 +27,18 @@
   min-block-size: 327px;
 }
 
-.header__logo {
+.site-header__logo {
   margin-top: 120px;
   font-size: var(--logo-font-size);
   text-transform: uppercase;
 }
 
-.header__title {
+.site-header__title {
   font-size: var(--title-font-size);
   text-transform: uppercase;
 }
 
-.theme-menu__list {
+.theme-selector__list {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +47,7 @@
   padding: 4px 0 0 21px;
 }
 
-.theme-menu__button {
+.theme-selector__button {
   border: none;
   border-block-end: 2px solid transparent;
   padding: 0;
@@ -75,63 +61,63 @@
   cursor: pointer;
 }
 
-.theme-menu__item:has(.theme-menu__button:disabled) {
+.theme-selector__item:has(.theme-selector__button:disabled) {
   position: relative;
   opacity: 0.6;
   pointer-events: none;
 }
 
-.theme-menu__item:has(.theme-menu__button:disabled)::before {
+.theme-selector__item:has(.theme-selector__button:disabled)::before {
   content: "▶";
   position: absolute;
   opacity: 0.6;
-  animation: left-right 0.5s ease-in-out infinite alternate;
+  animation: arrow-move 0.5s ease-in-out infinite alternate;
 }
 
-.theme-menu__item .theme-menu__button:hover {
+.theme-selector__item .theme-selector__button:hover {
   opacity: 0.6;
 }
 
-.theme-menu__button:focus {
+.theme-selector__button:focus {
   outline: none;
   opacity: 0.6;
   transition: 0.5s;
 }
 
-.theme-menu__button:focus-visible {
+.theme-selector__button:focus-visible {
   border-block-end: 2px solid currentColor;
-  animation: left-right-underline 0.5s linear;
+  animation: underline-grow 0.5s linear;
 }
 
 /* Конец header */
 
 /* Начало main */
-.main {
+.site-main {
   display: flex;
   flex-direction: column;
   gap: 50px;
   padding-block-start: 99px;
 }
 
-.card {
+.memory-card {
   border: 2px solid var(--accent-color);
   color: var(--accent-color);
   background-color: var(--card-background-color);
 }
 
-.card__title {
+.memory-card__title {
   border-block-end: 2px solid var(--accent-color);
   padding: 4px 10px 6px 10px;
   font-weight: var(--font-weight-title);
   font-size: 18px;
-  font-variation-settings: "wght" var(--font-weight-title); /* Добавлено */
+  font-variation-settings: "wght" var(--font-weight-title);
 }
 
-.image__block {
+.image-container {
   position: relative;
 }
 
-.image {
+.memory-image {
   width: 100%;
   height: 100%;
   border-block-end: 2px solid var(--accent-color);
@@ -140,7 +126,7 @@
   aspect-ratio: 1/1;
 }
 
-.image__block:after {
+.image-container:after {
   position: absolute;
   top: 23px;
   right: 11px;
@@ -155,91 +141,91 @@
 
 @supports (-webkit-text-stroke: 1px var(--text-stroke-color)) or
   (text-stroke: 1px var(--text-stroke-color)) {
-  .image__block:after {
+  .image-container:after {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--text-stroke-color);
     --text-stroke: 1px var(--text-stroke-color);
   }
 }
 
-.card:nth-child(1) .image__block:after,
-.card:nth-child(2) .image__block:after {
+.memory-card:nth-child(1) .image-container:after,
+.memory-card:nth-child(2) .image-container:after {
   content: "</HTML>";
 }
 
-.card:nth-child(3) .image__block:after {
+.memory-card:nth-child(3) .image-container:after {
   content: "<CSS>";
 }
 
-.card:nth-child(4) .image__block:after {
+.memory-card:nth-child(4) .image-container:after {
   content: "<desigions>";
 }
 
-.card:nth-child(5) .image__block:after {
+.memory-card:nth-child(5) .image-container:after {
   content: "care";
 }
 
-.card:nth-child(6) .image__block:after {
+.memory-card:nth-child(6) .image-container:after {
   content: "<support>";
 }
 
-.card:nth-child(7) .image__block:after {
+.memory-card:nth-child(7) .image-container:after {
   content: "<lifes-style: none;>";
 }
 
-.card:nth-child(8) .image__block:after {
+.memory-card:nth-child(8) .image-container:after {
   content: "<experience>";
 }
 
-.card:nth-child(2) .image__block .image {
+.memory-card:nth-child(2) .image-container .memory-image {
   filter: saturate(0.3);
 }
 
-.card:nth-child(3) .image__block .image {
+.memory-card:nth-child(3) .image-container .memory-image {
   filter: saturate(2.5);
 }
 
-.card:nth-child(4) .image__block .image {
+.memory-card:nth-child(4) .image-container .memory-image {
   filter: sepia(0.6) saturate(1.7);
 }
 
-.card:nth-child(5) .image__block .image {
+.memory-card:nth-child(5) .image-container .memory-image {
   filter: invert(0.8);
 }
 
-.card:nth-child(6) .image__block .image {
+.memory-card:nth-child(6) .image-container .memory-image {
   filter: sepia(0.9);
 }
 
-.card:nth-child(7) .image__block .image {
+.memory-card:nth-child(7) .image-container .memory-image {
   filter: blur(8px);
 }
 
-.card:nth-child(8) .image__block .image {
+.memory-card:nth-child(8) .image-container .memory-image {
   filter: blur(5px) hue-rotate(114deg);
 }
 
-.card__content {
+.memory-card__content {
   display: flex;
   flex-direction: column;
   gap: 27px;
   padding: 25px;
 }
 
-.text {
+.memory-text {
   font-weight: var(--font-weight-text);
   font-size: 18px;
   line-height: 115%;
-  font-variation-settings: "wght" var(--font-weight-text); /* Добавлено */
+  font-variation-settings: "wght" var(--font-weight-text);
 }
 
-.buttons {
+.action-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
-.card__icon-button {
+.memory-card__icon-btn {
   height: 36px;
   border: none;
   padding: 0;
@@ -247,16 +233,16 @@
   cursor: pointer;
 }
 
-.card__icon-button:focus {
+.memory-card__icon-btn:focus {
   outline: none;
 }
 
-.card__icon-button:focus-visible {
+.memory-card__icon-btn:focus-visible {
   outline: 2px solid currentColor;
   transition: 0.3s ease;
 }
 
-.button {
+.custom-btn {
   position: relative;
   border: 2px solid var(--accent-color);
   font-family: var(--custom-font), fantasy;
@@ -264,12 +250,12 @@
   cursor: pointer;
 }
 
-.card__like-button {
+.memory-card__like-btn {
   width: 128px;
   height: 35px;
 }
 
-.button .button__text {
+.custom-btn .btn-text {
   position: relative;
   z-index: 1;
   color: var(--button-text-color);
@@ -277,16 +263,16 @@
   mix-blend-mode: difference;
 }
 
-.button:focus {
+.custom-btn:focus {
   outline: none;
 }
 
-.button:focus-visible {
+.custom-btn:focus-visible {
   box-shadow: 2px 2px 0 0 var(--accent-color);
   transition: 0.5s ease-in-out;
 }
 
-.button::before {
+.custom-btn::before {
   content: "";
   position: absolute;
   top: 0;
@@ -296,7 +282,7 @@
   transition: 0.5s ease-in;
 }
 
-.button:hover::before {
+.custom-btn:hover::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -307,13 +293,13 @@
 /* Конец main */
 
 /* Начало footer */
-.footer {
+.site-footer {
   display: flex;
   justify-content: center;
   padding: 52px 32.5px 100px 32.5px;
 }
 
-.footer-button {
+.save-memory-btn {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -325,18 +311,18 @@
   min-block-size: 51px;
 }
 
-.footer-button .floppy-image {
+.save-memory-btn .save-icon {
   width: 21px;
   fill: var(--button-text-color);
   mix-blend-mode: difference;
 }
 
-.footer-button span {
+.save-memory-btn span {
   font-family: var(--custom-font), fantasy;
   font-size: 14px;
 }
 
-.dialog[open] {
+.memory-dialog[open] {
   border: 2px solid var(--accent-color);
   padding: 32px 42px;
   color: var(--accent-color);
@@ -346,11 +332,11 @@
   max-inline-size: 357px;
 }
 
-.dialog::backdrop {
+.memory-dialog::backdrop {
   background-color: rgb(0 0 0 / 0.75);
 }
 
-.dialog__info {
+.memory-dialog__info {
   display: grid;
   grid-template-columns: min-content 1fr;
   max-block-size: 63px;
@@ -358,13 +344,13 @@
   gap: 20px;
 }
 
-.dialog .floppy-image {
+.memory-dialog .save-icon {
   width: 39px;
   height: 39px;
   fill: currentColor;
 }
 
-.dialog__text {
+.memory-dialog__text {
   font-weight: 400;
   font-size: 14px;
   font-style: normal;
@@ -372,11 +358,11 @@
   text-transform: uppercase;
 }
 
-.dialog form {
+.memory-dialog form {
   margin-top: 30px;
 }
 
-.dialog .dialog-button {
+.memory-dialog .memory-dialog__btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -390,50 +376,50 @@
 /* Конец footer */
 
 @media (width <= 375px) {
-  .page {
+  .site-page {
     width: 100%;
   }
 
-  .footer-button {
+  .save-memory-btn {
     flex-direction: column;
   }
 
-  .footer-button .floppy-image {
+  .save-memory-btn .save-icon {
     width: 28px;
     height: 28px;
   }
 
-  .dialog[open] {
+  .memory-dialog[open] {
     max-inline-size: 341px;
   }
 }
 
 @media (376px <= width <= 1440px) {
-  .header {
+  .site-header {
     min-block-size: 364px;
   }
 
-  .header__logo {
+  .site-header__logo {
     margin-top: 134px;
   }
 
-  .footer-button {
+  .save-memory-btn {
     min-width: 340px;
     min-height: 40px;
     margin-top: -5px;
     padding: 15px;
   }
 
-  .floppy-image {
+  .save-icon {
     width: 21px;
     height: 21px;
   }
 
-  .footer-button .button__text {
+  .save-memory-btn .btn-text {
     letter-spacing: 0;
   }
 
-  .dialog[open] {
+  .memory-dialog[open] {
     padding: 30px;
   }
 }

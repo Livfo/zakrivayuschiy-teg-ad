@@ -1,4 +1,4 @@
-/* Этот скрипт использует имена классов theme-menu__button, theme-dark, theme-light и theme-auto;
+/* Этот скрипт использует имена классов theme-selector__button, theme-dark, theme-light и theme-auto;
 еще атрибуты disabled и data-theme. Поэтому их нельзя менять в HTML. */
 
 function changeTheme(theme) {
@@ -16,7 +16,7 @@ function changeTheme(theme) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
-  const themeButtons = document.querySelectorAll('.theme-menu__button');
+  const themeButtons = document.querySelectorAll('.theme-selector__button');
 
   function setDisabled(theme) {
     themeButtons.forEach((item) => {

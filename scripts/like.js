@@ -1,46 +1,45 @@
 /* этот скрипт использует такие имена классов:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
+✦ heart-icon — для svg-иконки анимированного сердца
+✦ memory-card__like-btn — для кнопки Like рядом с иконкой
+✦ memory-card__icon-btn — для кнопки, оборачивающей иконку
+✦ heart-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ btn-text — для обозначения текстового элемента внутри кнопки
 Если эти классы поменять в HTML, скрипт перестанет работать. Будьте аккуратны.
 */
 
 document.addEventListener('DOMContentLoaded', function() {
-  const likeHeartArray = document.querySelectorAll('.like-icon');
-  const likeButtonArray = document.querySelectorAll('.card__like-button');
-  const iconButtonArray = document.querySelectorAll('.card__icon-button');
+  const heartIcons = document.querySelectorAll('.heart-icon');
+  const likeButtons = document.querySelectorAll('.memory-card__like-btn');
+  const iconButtons = document.querySelectorAll('.memory-card__icon-btn');
 
-  iconButtonArray.forEach((iconButton, index) => {
+  iconButtons.forEach((iconButton, index) => {
     iconButton.addEventListener('click', function(event) {
       event.preventDefault();
-      toggleIsLiked(likeHeartArray[index], likeButtonArray[index]);
+      toggleHeartLike(heartIcons[index], likeButtons[index]);
     });
   });
 
-  likeButtonArray.forEach((button, index) => {
+  likeButtons.forEach((button, index) => {
     button.addEventListener('click', function(event) {
       event.preventDefault();
-      toggleIsLiked(likeHeartArray[index], button);
+      toggleHeartLike(heartIcons[index], button);
     });
   });
 
-  function toggleIsLiked(heart, button) {
-    heart.classList.toggle('is-liked');
-    setButtonText(heart, button);
+  function toggleHeartLike(heart, button) {
+    heart.classList.toggle('heart-liked');
+    updateButtonText(heart, button);
   }
 
-  function setButtonText(heart, button) {
-    if ([...heart.classList].includes('is-liked')) {
+  function updateButtonText(heart, button) {
+    if ([...heart.classList].includes('heart-liked')) {
       setTimeout(
-        () => (button.querySelector('.button__text').textContent = 'Unlike'),
+        () => (button.querySelector('.btn-text').textContent = 'Unlike'),
         500
       );
     } else {
       setTimeout(
-        () => (button.querySelector('.button__text').textContent = 'Like'),
+        () => (button.querySelector('.btn-text').textContent = 'Like'),
         500
       );
     }
